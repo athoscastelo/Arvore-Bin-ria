@@ -39,6 +39,31 @@ public class Arvoreb {
 	        System.out.println("Elemento já existe na árvore: " + elemento);
 
 		}
+    public void buscaEmOrdem(NoArvore no) {
+        if (no != null) {
+            buscaEmOrdem(no.getEsquerda());
+            System.out.print(no.getElemento() + " ");
+            buscaEmOrdem(no.getDireita());
+        }
+    }
+
+    public void buscaPreOrdem(NoArvore no) {
+        if (no != null) {
+            System.out.print(no.getElemento() + " ");
+            buscaPreOrdem(no.getEsquerda());
+            buscaPreOrdem(no.getDireita());
+        }
+    }
+
+    public void buscaPosOrdem(NoArvore no) {
+        if (no != null) {
+            buscaPosOrdem(no.getEsquerda());
+            buscaPosOrdem(no.getDireita());
+            System.out.print(no.getElemento() + " ");
+        }
+    }
+
 	}
+	
 
 }
