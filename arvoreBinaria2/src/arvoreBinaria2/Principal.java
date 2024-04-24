@@ -17,6 +17,18 @@ public class Principal {
 
 		        System.out.println("Árvore binária:");
 		        exibir(arvore.noRaiz);
+
+                System.out.println("Busca em ordem:");
+                arvore.buscaEmOrdem(arvore.noRaiz);
+                System.out.println();
+
+               System.out.println("Busca pré-ordem:");
+               arvore.buscaPreOrdem(arvore.noRaiz);
+               System.out.println();
+
+               System.out.println("Busca pós-ordem:");
+               arvore.buscaPosOrdem(arvore.noRaiz);
+              System.out.println();
 		    }
 
 		    public static void exibir(NoArvore no) {
@@ -26,6 +38,3 @@ public class Principal {
 		            exibir(no.getDireita());
 		        }
 		    }
-		
-
-	}
