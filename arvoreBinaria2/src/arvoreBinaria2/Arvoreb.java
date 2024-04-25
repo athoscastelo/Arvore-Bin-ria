@@ -1,3 +1,4 @@
+
 package arvoreBinaria2;
 
 public class Arvoreb {
@@ -39,6 +40,7 @@ public class Arvoreb {
 	        System.out.println("Elemento já existe na árvore: " + elemento);
 
 		}
+	}
     public void buscaEmOrdem(NoArvore no) {
         if (no != null) {
             buscaEmOrdem(no.getEsquerda());
@@ -61,9 +63,60 @@ public class Arvoreb {
             buscaPosOrdem(no.getDireita());
             System.out.print(no.getElemento() + " ");
         }
+    
+      }
+
+    public NoArvore buscaEspecifica (NoArvore no, int valor) {
+    	if (no.getElemento() == valor || no == null) {
+    		return no;
+    	}
+    	if (valor < no.getElemento()) {
+    		return buscaEspecifica(no.getEsquerda(), valor);
+    	}
+    	else {
+    		return buscaEspecifica(no.getDireita(), valor);
+    	}
+    	
+    }
+    
+    public void deletarNo(int valor) {
+        noRaiz = deletarRecursivo(noRaiz, valor);
     }
 
-	}
+    private NoArvore deletarRecursivo(NoArvore no, int valor) {
+        if (no == null) {
+            return null;
+        }
+
+        if (valor < no.getElemento()) {
+            no.setEsquerda(deletarRecursivo(no.getEsquerda(), valor));
+        } else if (valor > no.getElemento()) {
+            no.setDireita(deletarRecursivo(no.getDireita(), valor));
+        } else {
+            if (no.getEsquerda() == null) {
+                return no.getDireita();
+            } else if (no.getDireita() == null) {
+                return no.getEsquerda();
+            }
+
+            no.setElemento(minValor(no.getDireita()));
+
+            no.setDireita(deletarRecursivo(no.getDireita(), no.getElemento()));
+        }
+        return no;
+    }
+
+    private int minValor(NoArvore no) {
+        int min = no.getElemento();
+        while (no.getEsquerda() != null) {
+            min = no.getEsquerda().getElemento();
+            no = no.getEsquerda();
+        }
+        return min;
+    }
+
+    
+    
 	
 
 }
