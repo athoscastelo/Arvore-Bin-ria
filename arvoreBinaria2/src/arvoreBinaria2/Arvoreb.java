@@ -173,4 +173,18 @@ public class Arvoreb {
         }
     }
 }
+    public int calcularAltura(NoArvore no) {
+        if (no == null) {
+            return -1; 
+        } else {
+            int alturaEsquerda = calcularAltura(no.getEsquerda());
+            int alturaDireita = calcularAltura(no.getDireita());
+
+            if (alturaEsquerda > alturaDireita) {
+                return alturaEsquerda + 1;
+            } else {
+                return alturaDireita + 1;
+            }
+        }
+    }
 }
