@@ -43,6 +43,13 @@ public class Principal {
         arvore.deletarNo(valorExclusao);
         System.out.println("arvore após a exclusão:");
         exibir(arvore.noRaiz);
+    } 
+       Arvoreb arvore = new Arvoreb();
+       boolean tipoArvore = arvore.verificarTipoArvore(arvore.noRaiz);
+       if (tipoArvore) {
+       System.out.println("A árvore é do tipo especificado.");
+        } else {
+    System.out.println("A árvore não é do tipo especificado.");
     }
 
     public static void exibir(NoArvore no) {
