@@ -116,5 +116,61 @@ public class Arvoreb {
 		}
 		return min;
 	}
+	    public boolean arvoreEstritamenteBinaria(NoArvore no) {
+        if (no == null)
+            return true;
 
+        if (no.getEsquerda() == null && no.getDireita() == null)
+            return true;
+
+        if (no.getEsquerda() != null && no.getDireita() != null)
+            return arvoreEstritamenteBinaria(no.getEsquerda()) && arvoreEstritamenteBinaria(no.getDireita());
+
+        return false;
+    }
+
+    public boolean arvoreBinariaCompleta(NoArvore no, int index, int numNos) {
+        if (no == null)
+            return true;
+
+        if (index >= numNos)
+            return false;
+
+        return (arvoreBinariaCompleta(no.getEsquerda(), 2 * index + 1, numNos) && 
+                arvoreBinariaCompleta(no.getDireita(), 2 * index + 2, numNos));
+    }
+
+    public int contarNos(NoArvore no) {
+        if (no == null)
+            return 0;
+
+        return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
+    }
+
+    public boolean arvoreBinariaCheia(NoArvore no, int index, int numNos) {
+        if (no == null)
+            return true;
+
+        if (index >= numNos)
+            return false;
+
+        return (arvoreBinariaCheia(no.getEsquerda(), 2 * index + 1, numNos) && 
+                arvoreBinariaCheia(no.getDireita(), 2 * index + 2, numNos));
+    }
+
+    public boolean verificarTipoArvore(NoArvore no) {
+        int numNos = contarNos(no);
+        if (arvoreEstritamenteBinaria(no)) {
+            if (arvoreBinariaCompleta(no, 0, numNos))
+                return true;
+            else
+                return false;
+        } else {
+            if (arvoreBinariaCheia(no, 0, numNos))
+                return true;
+            else
+                return false;
+        }
+    }
+}
 }
