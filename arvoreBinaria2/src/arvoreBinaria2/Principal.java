@@ -48,6 +48,9 @@ public class Principal {
         } else {
             System.out.println("A árvore não é do tipo especificado.");
         }
+
+        int alturaArvore = arvore.calcularAltura(arvore.noRaiz);
+        System.out.println("Altura da árvore: " + alturaArvore);
     } 
 
     public static void exibir(NoArvore no) {
