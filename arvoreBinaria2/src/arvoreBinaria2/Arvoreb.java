@@ -129,15 +129,15 @@ public class Arvoreb {
         return false;
     }
 
-    public boolean arvoreBinariaCompleta(NoArvore no, int index, int numNos) {
+    public boolean arvoreBinariaCompleta(NoArvore no, int id, int qtdNos) {
         if (no == null)
             return true;
 
-        if (index >= numNos)
+        if (id >= qtdNos)
             return false;
 
-        return (arvoreBinariaCompleta(no.getEsquerda(), 2 * index + 1, numNos) && 
-                arvoreBinariaCompleta(no.getDireita(), 2 * index + 2, numNos));
+        return (arvoreBinariaCompleta(no.getEsquerda(), 2 * id + 1, qtdNos) && 
+                arvoreBinariaCompleta(no.getDireita(), 2 * id + 2, qtdNos));
     }
 
     public int contarNos(NoArvore no) {
@@ -147,26 +147,26 @@ public class Arvoreb {
         return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
     }
 
-    public boolean arvoreBinariaCheia(NoArvore no, int index, int numNos) {
+    public boolean arvoreBinariaCheia(NoArvore no, int id, int qtdNos) {
         if (no == null)
             return true;
 
-        if (index >= numNos)
+        if (id >= qtdNos)
             return false;
 
-        return (arvoreBinariaCheia(no.getEsquerda(), 2 * index + 1, numNos) && 
-                arvoreBinariaCheia(no.getDireita(), 2 * index + 2, numNos));
+        return (arvoreBinariaCheia(no.getEsquerda(), 2 * id + 1, qtdNos) && 
+                arvoreBinariaCheia(no.getDireita(), 2 * id + 2, qtdNos));
     }
 
     public boolean verificarTipoArvore(NoArvore no) {
-        int numNos = contarNos(no);
+        int qtdNos = contarNos(no);
         if (arvoreEstritamenteBinaria(no)) {
-            if (arvoreBinariaCompleta(no, 0, numNos))
+            if (arvoreBinariaCompleta(no, 0, qtdNos))
                 return true;
             else
                 return false;
         } else {
-            if (arvoreBinariaCheia(no, 0, numNos))
+            if (arvoreBinariaCheia(no, 0, qtdNos))
                 return true;
             else
                 return false;
